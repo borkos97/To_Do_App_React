@@ -2,54 +2,23 @@ import React, { Component } from 'react'
 
 import './App.css'
 
-import AddTask from "./AddTask";
-import TaskList from "./TaskList";
+import AddTask from "./components/AddTask";
+import TaskList from "./components/TaskList";
 
 class App extends Component {
-    counter = 0
     state = {
         tasks: [
             {
                 id: 0,
-                text: 'Zaprogramować toDoApp',
+                text: 'Przykładowe zadanie',
                 date: '2021.01.06',
                 important: true,
-                active: true,
-                finishDate: null
-            },
-            {
-                id: 1,
-                text: 'Pójść z psem',
-                date: '2021.01.07',
-                important: false,
-                active: true,
-                finishDate: null
-            },
-            {
-                id: 2,
-                text: 'a',
-                date: '2021.03.06',
-                important: false,
-                active: true,
-                finishDate: null
-            },
-            {
-                id: 3,
-                text: 'cos',
-                date: '2021.01.01',
-                important: false,
                 active: true,
                 finishDate: null
             }
         ]
     }
     deleteTask = (id) => {
-        // const tasks = [...this.state.tasks];
-        // const index = tasks.findIndex(task => task.id === id)
-        // tasks.splice(index, 1)
-        // this.setState({
-        //     tasks
-        // })
         let tasks = [...this.state.tasks];
         tasks = tasks.filter(task => task.id !== id)
         this.setState({

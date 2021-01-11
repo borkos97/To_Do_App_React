@@ -26,7 +26,6 @@ const Task = (props) => {
                     <br/>
                     -potwierdzenie wykonania <span>{finish}</span>
                     <button onClick={() => props.delete(id)}>X</button>
-                {/*    cofanie wykonania*/}
                 </p>
             </div>
         )
