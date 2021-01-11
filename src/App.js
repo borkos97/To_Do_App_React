@@ -8,14 +8,6 @@ import TaskList from "./components/TaskList";
 class App extends Component {
     state = {
         tasks: [
-            {
-                id: 0,
-                text: 'Zaprogramować toDoApp',
-                date: '2021.01.06',
-                important: true,
-                active: true,
-                finishDate: null
-            }
         ]
     }
     deleteTask = (id) => {
