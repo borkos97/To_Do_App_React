@@ -10,7 +10,7 @@ class App extends Component {
         tasks: [
             {
                 id: 0,
-                text: 'Przykładowe zadanie',
+                text: 'Zaprogramować toDoApp',
                 date: '2021.01.06',
                 important: true,
                 active: true,
@@ -53,13 +53,34 @@ class App extends Component {
         }))
         console.log(task)
     }
+    sortTasks = (active, type) => {
+        if (type === 'text') {
+            active.sort((e1, e2) => {
+                e1 = e1.text.toLowerCase()
+                e2 = e2.text.toLowerCase()
+                if (e1 < e2) return -1
+                if (e1 > e2) return 1
+                return 0
+            })
+        } else if (type === 'date') {
+            active.sort((e1, e2) => {
+                if (e1.date < e2.date) return -1
+                if (e1.date > e2.date) return 1
+                return 0
+            })
+        }
+
+        this.setState({
+            tasks: active
+        })
+    }
     render() {
         console.log(this.state)
         return(
             <div className={"App"}>
                 <h1>ToDoApp</h1>
                 <AddTask add={this.addTask}/>
-                <TaskList tasks={this.state.tasks} delete={this.deleteTask} finish={this.finishTask} sort={this.sortTask}/>
+                <TaskList tasks={this.state.tasks} delete={this.deleteTask} finish={this.finishTask} sort={this.sortTasks}/>
             </div>
         )
     }
