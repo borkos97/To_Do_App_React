@@ -3,9 +3,9 @@ import Task from './Task'
 
 import './TaskList.css'
 
-const TaskList = (props) => {
-    const active = props.tasks.filter(task => task.active);
-    const done = props.tasks.filter(task => !task.active);
+const TaskList = ({tasks, deleteTask, finish, sort}) => {
+    const active = tasks.filter(task => task.active);
+    const done = tasks.filter(task => !task.active);
 
     if (done.length >= 2) {
         done.sort((e1, e2) => {
@@ -19,14 +19,14 @@ const TaskList = (props) => {
         })
     }
 
-    const activeTasks = active.map(task => <Task key={task.id} task={task} delete={props.delete} finish={props.finish}/>)
-    const doneTasks = done.map(task => <Task key={task.id} task={task} delete={props.delete} finish={props.finish}/>)
+    const activeTasks = active.map(task => <Task key={task.id} task={task} deleteTask={deleteTask} finish={finish}/>)
+    const doneTasks = done.map(task => <Task key={task.id} task={task} deleteTask={deleteTask} finish={finish}/>)
     return (
         <>
             <div className={"active"}>
                 <h1>Zadania do zrobienia</h1>
-                {activeTasks.length >= 2 && <button onClick={() => props.sort(active, 'text')}>Sotruj alfabetycznie</button>}
-                {activeTasks.length >= 2 && <button onClick={() => props.sort(active, 'date')}>Sotruj po dacie</button>}
+                {activeTasks.length >= 2 && <button onClick={() => sort(active, 'text')}>Sotruj alfabetycznie</button>}
+                {activeTasks.length >= 2 && <button onClick={() => sort(active, 'date')}>Sotruj po dacie</button>}
                 {activeTasks.length > 0 ? activeTasks : <p>Brak zadań do wykonania</p>}
             </div>
             <hr/>
